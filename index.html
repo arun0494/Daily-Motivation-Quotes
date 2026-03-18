@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Motivation Quotes – Hindi & English</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#1e1e3f,#3a2f73);
+  color:#fff;
+}
+
+/* Container */
+.container{
+  max-width:500px;
+  margin:auto;
+  padding:15px;
+}
+
+/* Header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.header h1{
+  font-size:20px;
+}
+.icon-btn{
+  background:rgba(255,255,255,0.1);
+  border:none;
+  padding:10px;
+  border-radius:50%;
+  margin-left:5px;
+  cursor:pointer;
+}
+
+/* Search */
+.search{
+  margin-top:15px;
+}
+.search input{
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  background:rgba(255,255,255,0.1);
+  color:#fff;
+}
+
+/* Category */
+.categories{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+  overflow-x:auto;
+}
+.cat{
+  padding:8px 15px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.1);
+  cursor:pointer;
+}
+.active{
+  background:linear-gradient(45deg,#ff8a00,#ff3d7f);
+}
+
+/* Quote Card */
+.card{
+  margin-top:20px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+.quote{
+  font-size:18px;
+  margin:20px 0;
+}
+.tag{
+  background:#ff3d7f;
+  padding:5px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* Buttons */
+.buttons{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+}
+.primary{
+  background:linear-gradient(45deg,#ff8a00,#ff3d7f);
+  color:#fff;
+}
+
+/* Ad */
+.ad{
+  margin-top:20px;
+  background:#fff;
+  color:#000;
+  padding:10px;
+  text-align:center;
+  border-radius:10px;
+}
+
+/* Footer */
+.footer{
+  margin-top:20px;
+  font-size:12px;
+  text-align:center;
+}
+
+/* Dark Mode */
+.dark{
+  background:#000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>✨ Daily Motivation</h1>
+  <div>
+    <button class="icon-btn" onclick="toggleDark()">🌙</button>
+  </div>
+</div>
+
+<!-- Search -->
+<div class="search">
+  <input placeholder="Search quotes...">
+</div>
+
+<!-- Categories -->
+<div class="categories">
+  <div class="cat active">All</div>
+  <div class="cat">Success</div>
+  <div class="cat">Study</div>
+  <div class="cat">Life</div>
+</div>
+
+<!-- Quote Card -->
+<div class="card">
+  <div class="quote" id="quote">Click below to get motivation 🚀</div>
+  <span class="tag">LIFE</span>
+</div>
+
+<!-- Buttons -->
+<div class="buttons">
+  <button class="primary" onclick="newQuote()">⚡ New</button>
+  <button onclick="copyQuote()">📋 Copy</button>
+  <button onclick="shareQuote()">🔗 Share</button>
+</div>
+
+<!-- Ad -->
+<div class="ad">
+Ad Banner
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<a href="#privacy">Privacy Policy</a>
+</div>
+
+</div>
+
+<!-- Privacy -->
+<div id="privacy" class="container">
+<h3>Privacy Policy</h3>
+<p>This app does not collect any personal data.</p>
+</div>
+
+<script>
+
+const quotes=[
+"Push yourself, because no one else will.",
+"सफलता मेहनत से मिलती है।",
+"Dream big, work hard.",
+"हार मत मानो।",
+"Stay focused.",
+"Keep going.",
+"Never quit.",
+"Be strong.",
+"Stay motivated.",
+"Believe in yourself."
+];
+
+let currentQuote="";
+
+function newQuote(){
+  const q=quotes[Math.floor(Math.random()*quotes.length)];
+  currentQuote=q;
+  document.getElementById("quote").innerText=q;
+}
+
+function copyQuote(){
+  navigator.clipboard.writeText(currentQuote);
+  alert("Copied!");
+}
+
+function shareQuote(){
+  if(navigator.share){
+    navigator.share({text:currentQuote});
+  }
+}
+
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+</script>
+
+</body>
+</html>
