@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Motivation Quotes – Hindi & English</title>
+<meta name="description" content="Get daily motivation quotes in Hindi and English. Stay inspired every day.">
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  color:#fff;
+  text-align:center;
+  transition:0.3s;
+}
+.container {
+  padding:20px;
+  max-width:500px;
+  margin:auto;
+}
+h1 {font-size:24px;}
+.quote {
+  margin:30px 0;
+  font-size:20px;
+  min-height:80px;
+  transition:0.5s;
+}
+button {
+  margin:5px;
+  padding:10px 15px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.light button {background:#333;color:#fff;}
+.dark {background:#111;}
+.dark button {background:#fff;color:#000;}
+
+.footer {
+  margin-top:40px;
+  font-size:12px;
+}
+a {color:#fff;}
+.ad {
+  margin-top:20px;
+  background:#fff;
+  color:#000;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Daily Motivation Quotes</h1>
+
+<div class="quote" id="quote">Click below to get motivation 🚀</div>
+
+<button onclick="newQuote()">New Quote</button>
+<button onclick="copyQuote()">Copy</button>
+<button onclick="shareQuote()">Share</button>
+<button onclick="toggleDark()">Dark Mode</button>
+<button onclick="saveFav()">❤️ Save</button>
+
+<div class="ad">
+<!-- Paste your Adsterra banner code here -->
+Ad Banner
+</div>
+
+<div class="footer">
+<a href="#privacy">Privacy Policy</a>
+</div>
+
+</div>
+
+<!-- Privacy Policy -->
+<div id="privacy" class="container">
+<h2>Privacy Policy</h2>
+<p>This app does not collect any personal data. We respect your privacy.</p>
+</div>
+
+<script>
+
+const quotes = [
+"Push yourself, because no one else will.",
+"सफलता मेहनत से मिलती है, किस्मत से नहीं।",
+"Dream big, work hard.",
+"हार मत मानो, शुरुआत हमेशा कठिन होती है।",
+"Discipline beats motivation.",
+"तुम कर सकते हो, बस खुद पर विश्वास रखो।",
+"Success is a journey, not a destination.",
+"हर दिन एक नया मौका है।",
+"Stay focused and never give up.",
+"मेहनत इतनी खामोशी से करो कि सफलता शोर मचा दे।",
+
+"Believe in yourself.",
+"अपने सपनों को सच करो।",
+"Work hard in silence.",
+"Focus on your goal.",
+"Stay positive always.",
+"Keep learning.",
+"Never quit.",
+"Success takes time.",
+"Start now.",
+"Be consistent.",
+
+"Small steps lead to big success.",
+"आज मेहनत, कल आराम।",
+"Consistency is key.",
+"Think big.",
+"Act now.",
+"Dream it. Do it.",
+"Stay hungry.",
+"Stay strong.",
+"Don't stop.",
+"Rise again.",
+
+"Every day matters.",
+"Make yourself proud.",
+"Learn from failure.",
+"Stay disciplined.",
+"Be fearless.",
+"Hard work wins.",
+"Stay motivated.",
+"Trust the process.",
+"Keep moving.",
+"Focus matters.",
+
+"जीतने वाले हार नहीं मानते।",
+"सपने वो नहीं जो सोते समय आते हैं।",
+"काम करो, नाम खुद बनेगा।",
+"डर के आगे जीत है।",
+"कुछ बड़ा करना है तो मेहनत करनी पड़ेगी।",
+"हार के बाद ही जीत होती है।",
+"खुद को बदलो, जिंदगी बदल जाएगी।",
+"जो सोचोगे वही बनोगे।",
+"आज का दर्द, कल की ताकत।",
+"सफलता इंतजार नहीं करती।"
+];
+
+let currentQuote = "";
+
+function newQuote(){
+  const random = quotes[Math.floor(Math.random()*quotes.length)];
+  currentQuote = random;
+  document.getElementById("quote").innerText = random;
+}
+
+function copyQuote(){
+  navigator.clipboard.writeText(currentQuote);
+  alert("Copied!");
+}
+
+function shareQuote(){
+  if(navigator.share){
+    navigator.share({text: currentQuote});
+  } else {
+    alert("Sharing not supported");
+  }
+}
+
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+function saveFav(){
+  let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+  favs.push(currentQuote);
+  localStorage.setItem("favs", JSON.stringify(favs));
+  alert("Saved!");
+}
+
+</script>
+
+</body>
+</html>
